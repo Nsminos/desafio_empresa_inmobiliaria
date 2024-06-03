@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<H3>Perfil {{ user.username}}</H3>
+      {% for i in inmuebles %}
+      <li><p>{{i.nombre_inmueble}}</p>
+          <p>{{i.id_region.nombre_region}}</p>
+          <p>{{i.id_comuna.nombre_comuna}}</p>
+      </li>
+      
+      
+        
+      {% endfor %}
+        <a href="{% url 'logout' %}"">Logout</a>
+      
+    
+    {% else %}
+    
+    <h1>Debes Iniciar sesion para acceder al contenido</h1>
+    <a href="{% url 'login_url' %}"">Login</a>
+    
+      
+      
+{% endif %}
+{% endblock content %}

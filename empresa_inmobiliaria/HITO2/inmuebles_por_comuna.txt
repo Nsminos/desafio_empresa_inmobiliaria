@@ -1,0 +1,9 @@
+ Inmueble: Fundo los Condores
+ Descripcion: Sin Descripcion
+ Comuna: Curicó
+ Inmueble: Fundo Los Copihues
+ Descripcion: Sin Descripcion
+ Comuna: Curicó
+ Inmueble: Fundo los Condores
+ Descripcion: Sin Descripcion
+ Comuna: Curicó

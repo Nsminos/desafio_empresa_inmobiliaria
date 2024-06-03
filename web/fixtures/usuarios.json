@@ -1,0 +1,16 @@
+[
+    {
+        "model": "web.usuario",
+        "pk": 2, 
+        "fields": {"id_usuario": 4, 
+        "nombre": "Nathalie", 
+        "apellido": "Mino"}
+}, 
+    {
+        "model": "web.usuario", 
+        "pk": 3, 
+        "fields": {"id_usuario": 5, 
+        "nombre": "Gabriel", 
+        "apellido": "Garrido"}
+        }
+    ]

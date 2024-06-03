@@ -1,0 +1,3 @@
+ Inmueble: Fundo Los Copihues
+ Descripcion: Sin Descripcion
+ Region: Región del Maule

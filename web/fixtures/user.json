@@ -1,0 +1,71 @@
+[
+    {
+        "model": "auth.user", 
+        "pk": 1, 
+        "fields": {
+        "password": "pbkdf2_sha256$600000$JFpewvnJljhC3UMktmY6HB$ygQjwCLkO4mevAWwBWKm5yoME6R2E2OyG/K0LN3je3Q=", 
+        "last_login": "2024-05-31T01:41:26.424Z", 
+        "is_superuser": true, 
+        "username": "admin", 
+        "first_name": "", 
+        "last_name": "", 
+        "email": "admin@admin.cl", 
+        "is_staff": true, 
+        "is_active": true, 
+        "date_joined": "2024-05-25T16:25:07.146Z", 
+        "groups": [], 
+        "user_permissions": []
+        }
+        }, 
+    {
+        "model": "auth.user", 
+        "pk": 4, 
+        "fields": {"password": "pbkdf2_sha256$600000$rqeKsH36nFzQpzOKgARmmT$QHud8k+JDmrayx7Vseyj222F60zwNXQNcOByDArn0VI=", 
+        "last_login": null, 
+        "is_superuser": false, 
+        "username": "nsmino", 
+        "first_name": "Nathalie", 
+        "last_name": "Mino",
+        "email": "nathalie@gmail.cl", 
+        "is_staff": false, 
+        "is_active": true, 
+        "date_joined": "2024-05-31T01:47:25.028Z", 
+        "groups": [], 
+        "user_permissions": []
+        }
+        }, 
+    {
+        "model": "auth.user", 
+        "pk": 5, 
+        "fields": {"password": "pbkdf2_sha256$600000$4gypGqmXp2nIHfUPxcbr2K$KrzeWeByBvKlZaFwWHcBqQJ2n0o0Nt1lRigpqPowkGY=", 
+        "last_login": null, 
+        "is_superuser": false, 
+        "username": "GabrielG", 
+        "first_name": "Gabriel", 
+        "last_name": "Garrido", 
+        "email": "ggarrido@gmail.cl", 
+        "is_staff": false, 
+        "is_active": true, 
+        "date_joined": "2024-05-31T02:09:52.242Z", 
+        "groups": [], 
+        "user_permissions": []
+        }
+        },
+        {
+            "model": "auth.user", 
+            "pk": 6, 
+            "fields": {"password": "pbkdf2_sha256$600000$4gypGqmXp2nIHfUPxcbr2K$KrzeWeByBvKlZaFwWHcBqQJ2n0o0Nt1lRigpqPowkGY=", 
+            "last_login": null, 
+            "is_superuser": false, 
+            "username": "JoseL", 
+            "first_name": "Jose", 
+            "last_name": "Latapiatt", 
+            "email": "josel@gmailcom", 
+            "is_staff": false, 
+            "is_active": true, 
+            "date_joined": "2024-05-31T02:09:52.242Z", 
+            "groups": [], 
+            "user_permissions": []
+            }
+            }
+    ]
