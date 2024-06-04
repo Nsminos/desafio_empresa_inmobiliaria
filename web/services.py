@@ -7,7 +7,7 @@ def obtener_inmuebles():
         print(inmueble)
     
 
-def crear_inmueble(id_usuario,id_tipo_inmueble,id_comuna,id_region,nombre_inmueble,m2_construido,numero_banos,numero_hab,direccion,estado):
+def crear_inmueble(id_usuario,id_tipo_inmueble,id_comuna,id_region,nombre_inmueble,m2_construidos,cantidad_de_banos,cantidad_de_Habitaciones,direccion,estado):
     #primero obtenemos los datos para crear el inmueble
     user = User.objects.get(id =id_usuario)
     tipo_inmueble = Tipo_inmueble.objects.get(id =id_tipo_inmueble)
@@ -16,13 +16,13 @@ def crear_inmueble(id_usuario,id_tipo_inmueble,id_comuna,id_region,nombre_inmueb
 
     inmueble = Inmueble(
         id_usuario = user,
-        id_tipo_inmueble = tipo_inmueble,
+        id_inmueble = tipo_inmueble,
         id_comuna = comuna,
         id_region = region,
         nombre_inmueble = nombre_inmueble,
-        m2_construido = m2_construido,
-        numero_banos = numero_banos,
-        numero_hab = numero_hab,
+        m2_construidos = m2_construidos,
+        cantidad_de_banos = cantidad_de_banos,
+        cantidad_de_Habitaciones = cantidad_de_Habitaciones,
         direccion = direccion,
         estado =estado
     )
@@ -78,7 +78,7 @@ def obtener_inmuebles_por_region(region):
             FROM web_inmueble 
             INNER JOIN web_region 
             ON web_inmueble.id_region_id = web_region.id 
-            WHERE web_region.nombre_region like 'Región del Maule';
+            WHERE web_region.nombre_region like '{region}';
             """
     query = Inmueble.objects.raw(select)
     archivo1=open("inmuebles_por_region.txt","a",encoding='utf-8')

@@ -93,8 +93,8 @@ class Perfil(models.Model):
     tipo_usuario = models.ForeignKey('Tipo_usuario', on_delete=models.CASCADE)
     rut = models.CharField(max_length=9,null=False, blank=False)
     direccion = models.CharField(max_length=50, null=False, blank=False)
-    telefono_personal = models.CharField(max_length=10, null=False, blank=False)
-    correo_electronico = models.EmailField()
+    telefono = models.CharField(max_length=10, null=False, blank=False)
+    correo = models.EmailField()
     
     def __str__(self):
         return self.usuario.username

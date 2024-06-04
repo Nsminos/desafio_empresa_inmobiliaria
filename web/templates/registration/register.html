@@ -1,15 +1,92 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<h1>
-    Registrarse
-</h1>
-<form  method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    {{form.errors}}
-    <button type="submit">Registrase</button>
-</form>
-{% endblock content %}
+<div class="container" id="registrar">
+<div class="row"><h1 class="align-text-left"> Registrarse </h1></div>
+    <div class="col">
+        
+        <form  method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3 text-center">
+                <label for="{{form.username.id_for_label}}" class="form-label">
+                    {{form.username.label_tag}}
+                </label>
+                <div>
+                    {{form.username}}
+                </div>
+                <div class="text-danger">
+                    {{form.usename.errors}}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label for="{{form.first_name.id_for_label}}" class="form-label">
+                    {{form.first_name.label_tag}}
+                </label>
+                <div>
+                    {{form.first_name}}
+                </div>
+                <div class="text-danger">
+                    {{form.first_name.errors}}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label for="{{form.last_name.id_for_label}}" class="form-label">
+                    {{form.last_name.label_tag}}
+                </label>
+                <div>
+                    {{form.last_name}}
+                </div>
+                <div class="text-danger">
+                    {{form.last_name.errors}}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label for="{{form.email.id_for_label}}" class="form-label">
+                    {{form.email.label_tag}}
+                </label>
+                <div>
+                    {{form.email}}
+                </div>
+                <div class="text-danger">
+                    {{form.email.errors}}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label for="{{form.password1.id_for_label}}" class="form-label">
+                    {{form.password1.label_tag}}
+                </label>
+                <div>
+                    {{form.password1}}
+                </div>
+                <div class="text-danger">
+                    {{form.password1.errors}}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label for="{{form.password2.id_for_label}}" class="form-label">
+                    {{form.password2.label_tag}}
+                </label>
+                <div>
+                    {{form.password2}}
+                </div>
+                <div class="text-danger">
+                    {{form.password2.errors}}
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit">Registrarse</button>
+            </div>
+            
+        </form>
+
+    </div>
+</div>
+{% endblock %}
     
