@@ -2,14 +2,25 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect, get_obj
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Inmueble, Perfil
-from .forms import UserForm, PerfilForm, InmuebleForm
+from .models import Inmueble, Perfil, Region, Comuna,Contact
+from .forms import UserForm, PerfilForm, InmuebleForm, ContactForm
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
+    regiones = Region.objects.all()
+    comunas = Comuna.objects.all()
+    region_id = request.GET.get('region')
+    comuna_id = request.GET.get('comuna')
     inmuebles = Inmueble.objects.all()
+
+    if region_id:
+        inmuebles = inmuebles.filter(id_region=region_id)
+    if comuna_id:
+        inmuebles = inmuebles.filter(id_comuna=comuna_id)
     context = {
-        'inmuebles': inmuebles
+        'inmuebles': inmuebles,
+        'regiones': regiones,
+        'comunas': comunas
     }
     return render(request, 'index.html', context)
     
@@ -131,9 +142,10 @@ def register_inmueble(request, username):
             comuna = form.cleaned_data['id_comuna']
             region = form.cleaned_data['id_region']
             nombre_inmueble = form.cleaned_data['nombre_inmueble']
-            m2_construido = form.cleaned_data['m2_construido']
-            numero_banos = form.cleaned_data['numero_banos']
-            numero_hab = form.cleaned_data['numero_hab']
+            m2_construidos = form.cleaned_data['m2_construidos']
+            m2_totales = form.cleaned_data['m2_totales']
+            cant_de_banos = form.cleaned_data['cant_de_banos']
+            cant_de_hab = form.cleaned_data['cant_de_hab']
             direccion = form.cleaned_data['direccion']
             descripcion = form.cleaned_data['descripcion']
             
@@ -143,9 +155,10 @@ def register_inmueble(request, username):
                 id_comuna=comuna,
                 id_region=region,
                 nombre_inmueble=nombre_inmueble,
-                m2_construido=m2_construido, 
-                numero_banos=numero_banos,
-                numero_hab=numero_hab,
+                m2_construidos=m2_construidos,
+                m2_totales=m2_totales, 
+                cant_de_banos=cant_de_banos,
+                cant_de_hab=cant_de_hab,
                 direccion=direccion,
                 descripcion=descripcion
             )
@@ -174,3 +187,104 @@ def get_inmuebles(request):
             'title':'Registrar Inmueble'
         }
     return render(request, 'inmuebles.html', context)
+
+@login_required(login_url='/login/')
+def update_inmueble(request, pk):
+    usuario = request.user
+    tipo = Perfil.objects.get(usuario=usuario).tipo_usuario.tipo
+    inmueble = Inmueble.objects.get(pk=pk)
+
+    if request.method =="POST":
+        form = InmuebleForm(request.POST)
+        if form.is_valid():
+            inmueble = Inmueble.objects.filter(pk=pk).update(**form.cleaned_data)
+            #el metodo update funciona solo con querysets por lo que no funcionara con el metodo get del object
+            
+            return HttpResponseRedirect('/inmuebles/')
+
+    ###CON EL GET
+    elif inmueble.id_usuario.id == usuario.id:
+    #nos traemos el objeto Inmueble con pk = pk
+        form = InmuebleForm(instance=inmueble)
+        context = {
+                    'form':form,
+                    'title':'Editar Inmueble',
+                    'tipo':tipo
+                    }
+    else:
+        form = 'Inmueble no encontrado'
+        context = {
+                    'form':form,
+                    'title':'Usted no tiene acceso a esta propiedad',
+                    'tipo':tipo
+
+                    }
+    return render(request,'register_inmueble.html', context)
+
+
+def contact(request, id):
+    usuario = request.user
+    tipo = Perfil.objects.get(usuario=usuario).tipo_usuario.tipo
+    inmueble = Inmueble.objects.get(pk=id)
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            correo = form.cleaned_data['correo']
+            nombre = form.cleaned_data['nombre']
+            mensaje = form.cleaned_data['mensaje']
+            nombre_inmueble = inmueble.nombre_inmueble
+            arrendador = inmueble.id_usuario
+
+            data = Contact(
+                nombre_inmueble=nombre_inmueble,
+                correo=correo,
+                arrendador=arrendador,
+                nombre=nombre,
+                mensaje=mensaje,
+            )
+            data.save()
+            return HttpResponseRedirect('/home/')
+
+    form = ContactForm()
+    context = {
+                'form':form,
+                'title':'Contacta al Propietario',
+                'tipo':tipo
+            }
+    return render(request,'register_inmueble.html', context)
+    
+
+def messages(request):
+    usuario = request.user
+    messages = Contact.objects.filter(arrendador=usuario)
+    tipo = Perfil.objects.get(usuario=usuario).tipo_usuario.tipo
+
+    context = {
+                    'messages':messages,
+                    'tipo':tipo
+                }
+    return render(request, 'contact.html', context)
+
+
+
+
+# @login_required(login_url='/login/')
+# def update_profile(request):
+#     usuario = request.user  
+#     if request.method == "POST":
+#         form = PerfilForm(request.POST)
+#         if form.is_valid():
+#             perfil = Perfil.objects.filter(usuario=usuario).update(**form.cleaned_data)
+#             return HttpResponseRedirect('/profile/')
+    
+#     else:
+
+#         perfil = Perfil.objects.filter(usuario=usuario)
+#         if perfil.exists():
+#             perfil = perfil.first()
+#             form = PerfilForm(instance=perfil)
+#             context = {
+#                 'form':form,
+#                 'title':'Actualizar Perfil'
+#             }
+#             return render(request, 'register_profile.html', context)

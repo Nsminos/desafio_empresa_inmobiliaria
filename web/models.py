@@ -25,18 +25,18 @@ class Inmueble(models.Model):
          ('Disponible', 'Disponible'),
         ('No Disponible', 'No Disponible')
     ]
-    id_inmueble = models.ForeignKey('Tipo_inmueble', on_delete=models.CASCADE)
+    id_tipo_inmueble = models.ForeignKey('Tipo_inmueble', on_delete=models.CASCADE)
     id_usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     id_comuna = models.ForeignKey('Comuna', on_delete=models.CASCADE)
     id_region = models.ForeignKey('Region', on_delete=models.CASCADE)
     nombre_inmueble = models.CharField(max_length=50, null=False, unique=True)
-    direccion = models.CharField(max_length=250)
-    descripcion = models.TextField(max_length=200, null=False, blank=False, default='Sin Descripcion')
+    direccion = models.CharField(max_length=200)
+    descripcion = models.TextField(max_length=250, null=False, blank=False, default='Sin Descripcion')
     m2_construidos = models.FloatField(null=False, blank=False)
-    m2_Totales_o_del_terreno = models.FloatField(null=False, blank=False)
-    cantidad_de_estacionamientos = models.PositiveIntegerField(default=0, null=False, blank=False)
-    cantidad_de_Habitaciones = models.PositiveIntegerField(default=0, null=False, blank=False)
-    cantidad_de_banos = models.PositiveIntegerField(default=0, null=False, blank=False)
+    m2_totales = models.FloatField(null=False, blank=False)
+    cant_de_estac = models.PositiveIntegerField(default=0, null=False, blank=False)
+    cant_de_hab = models.PositiveIntegerField(default=0, null=False, blank=False)
+    cant_de_banos = models.PositiveIntegerField(default=0, null=False, blank=False)
     precio_mensual_de_arriendo = models.IntegerField(validators=[MinValueValidator(0)],default=0, null=False, blank=False)
     estado = models.CharField(choices=CHOICES)
 
@@ -64,7 +64,7 @@ class Region(models.Model):
     nombre_region = models.TextField()
     #como esta hecho para chile podriamos poner un ChoiceField de todas las regiones de chile
     def __str__(self):
-        return self.region
+        return self.nombre_region
     
 """class Region(models.Model):
     CHOICES=[('Arica y Parinacota','Arica y Parinacota'),
@@ -110,3 +110,14 @@ class Tipo_inmueble(models.Model):
 
     def __str__(self):
         return self.tipo_inmueble
+    
+
+class Contact(models.Model):
+    arrendador = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    nombre_inmueble = models.CharField()
+    correo = models.EmailField()
+    nombre = models.CharField(max_length=64)
+    mensaje = models.TextField()
+
+    def __str__(self):
+        return f"{self.correo} - Mensaje: {self.mensaje}"

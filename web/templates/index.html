@@ -1,24 +1,96 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-{{ user.username}}
-    {% for i in inmuebles %}
-    <ul>
-        <li>{{i.nombre_inmueble}}</li>
-        <li>{{i.id_region.region}}</li>
-        <li>{{i.id_comuna.comuna}}</li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="row mb-3">
+
+            <!-- <form method="get">
+                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         
-    {% endfor %}
-        <a href="{% url 'logout' %}"">Logout</a>
+            </form> -->
+        
+            <form method="get" action="{% url 'home'%}">
+                <select name="nombre_region">
+                <option value="">Regiones</option>
+                {% for r in regiones%}
+                    <option value="{{r.id}}">{{r.nombre_region}}</option>
+                {%endfor%}
+                </select>
+                <select name="nombre_comuna">
+                <option value="">Comunas</option>
+                {% for c in comunas%}
+                    <option value="{{c.id}}">{{c.nombre_comuna}}</option>
+                {%endfor%}
+                </select>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        <div class="col">
+            <div class="text-blue bg-green rounded-3" >
+                <h2 style="text-align: center;"><em>Oferta inmobiliaria</em></h2>
+                <p style="text-align: center;"><em>Encuentra casas, departamentos y parcelas en arriendo</em></p>    
+            </div>
+        </div>
+    </div>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://okdiario.com/coolthelifestyle/img/2023/09/19/casa-prefabricada-madrid.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://images.adsttc.com/media/images/55e6/3636/4d8d/5d67/1100/026e/newsletter/edificio-vistabaron-16.jpg?1441150502" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://imganuncios.mitula.net/parcela_en_venta_en_pillanlelbun_pillanlelbun_cautin_420_m2_3_hab_8960036680781490458.jpg" class="d-block w-100" alt="...">
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="row">
+        <h4><em>Perfil: {{ user.username}}</em></h4>
+        {% for i in inmuebles %}
+        <div class="col col-5 card md-3" style="margin: 20px 50px 20px 50px;">
+            <div class="row g-0">
+                <div class="col-md-6" style="margin-top: 20px;">
+                <img src="https://www.ompropiedades.cl/Fotos/371a.jpg" class="img-fluid rounded-start-align-center" alt="..." style="height: 451px;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h4 class="card-title"><em>{{i.nombre_inmueble}}</em></h4>
+                        <p class="card-text">{{i.id_region.nombre_region}}</p>
+                        <p class="card-text">Comuna: {{i.id_comuna.nombre_comuna}}</p>
+                        <p class="card-text">M2 construidos: {{i.m2_construidos}}</p>
+                        <p class="card-text">M2 totales: {{i.m2_totales}}</p>
+                        <p class="card-text">Numero de baños: {{i.cant_de_banos}}</p>
+                        <p class="card-text">Numero de hab: {{i.cant_de_hab}}</p>
+                        <p class="card-text">Numero de estac: {{i.cant_de_estac}}</p>
+                        <p class="card-text">Precio mensual: ${{i.precio_mensual_de_arriendo}}</p>
+                        <p class="card-text">Estado: {{i.estado}}</p>
+                        <a class="btn btn-primary" href="{% url 'contact' i.pk %}">Contactar al propietario</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
 
+            <a href="{% url 'logout' %}"">Logout</a>
     
-    {% else %}
     
-    <h1>Debes Iniciar sesion para acceder al contenido</h1>
-    <a href="{% url 'login_url' %}"">Login</a>
+        {% else %}
     
-
-
+        <h1>Debes Iniciar sesion para acceder al contenido</h1>
+        <a href="{% url 'login_url' %}"">Login</a>
+    
+</div>
 {% endif %}
 {% endblock content %}

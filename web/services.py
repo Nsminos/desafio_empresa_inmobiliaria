@@ -7,7 +7,9 @@ def obtener_inmuebles():
         print(inmueble)
     
 
-def crear_inmueble(id_usuario,id_tipo_inmueble,id_comuna,id_region,nombre_inmueble,m2_construidos,cantidad_de_banos,cantidad_de_Habitaciones,direccion,estado):
+def crear_inmueble(id_tipo_inmueble,id_usuario,id_comuna,
+    id_region,nombre_inmueble,direccion,descripcion,m2_construidos,
+    m2_totales,cant_de_estac,cant_de_hab,cant_de_banos,precio_mensual_de_arriendo,estado):
     #primero obtenemos los datos para crear el inmueble
     user = User.objects.get(id =id_usuario)
     tipo_inmueble = Tipo_inmueble.objects.get(id =id_tipo_inmueble)
@@ -15,16 +17,20 @@ def crear_inmueble(id_usuario,id_tipo_inmueble,id_comuna,id_region,nombre_inmueb
     region = Region.objects.get(id =id_region)
 
     inmueble = Inmueble(
+        id_tipo_inmueble =tipo_inmueble,
         id_usuario = user,
-        id_inmueble = tipo_inmueble,
         id_comuna = comuna,
         id_region = region,
         nombre_inmueble = nombre_inmueble,
-        m2_construidos = m2_construidos,
-        cantidad_de_banos = cantidad_de_banos,
-        cantidad_de_Habitaciones = cantidad_de_Habitaciones,
         direccion = direccion,
-        estado =estado
+        descripcion = descripcion,
+        m2_construidos = m2_construidos, 
+        m2_totales = m2_totales,
+        cant_de_estac =cant_de_estac,
+        cant_de_hab = cant_de_hab,
+        cant_de_banos =  cant_de_banos,
+        precio_mensual_de_arriendo = precio_mensual_de_arriendo,
+        estado = estado, 
     )
 
     inmueble.save()

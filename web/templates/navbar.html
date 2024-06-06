@@ -1,11 +1,14 @@
+
+
+{% block content %}
 <div  class="container">
   
-  <nav class="navbar navbar-expand-lg" style="background-color: greenyellow;">
+  <nav class="navbar navbar-expand-lg" style="background-color: yellowgreen;">
     <div class="container-fluid">
       {% load static%}
       <a class="navbar-brand" href="#">
-        <img src="{% static 'inmobiliaria.png' %}" alt="Logo" width="50px"  class="d-inline-block align-text-left">
-        Portal inmobiliario
+        <img src="{% static 'inmobiliaria.png' %}" alt="Logo" width="100px"  class="d-inline-block align-text-left">
+        <em>Portal inmobiliario</em>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,18 +18,24 @@
 
             {% if tipo == 'Arrendador'  %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'get_inmuebles' %}">Propiedades</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'get_inmuebles' %}"><em>Propiedades</em></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'register_inmueble' user.username %}">Registrar propiedad</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'register_inmueble' user.username %}"><em>Registrar propiedad</em></a>
               </li>
-            {% endif %}
-              
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'mensaje'%}">Mensajes</a>
+              </li>
+            {% else %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Mi perfil</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Arriendos</a>
+            </li>
+            {% endif %}  
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'profile' %}"><em>Mi perfil</em></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+              <a class="nav-link active" aria-current="page" href="#"><em>Contacto</em></a>
             </li>
             
             {% if user.is_authenticated %}
@@ -42,3 +51,4 @@
       </div>
     </nav>
   </div>
+{% endblock content %}

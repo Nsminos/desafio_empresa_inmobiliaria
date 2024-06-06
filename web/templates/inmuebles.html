@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="container">
     {% if user.is_authenticated %}
         {{ user.username}} {{tipo}}
         {% if tipo == "Arrendador" %}
             <br>
                 {% for i in inmuebles %}
+                    
                     <hr>
-                    <ul>
-                        <li>{{i.nombre_inmueble}}</li>
-                        <li>{{i.id_region.region}}</li>
-                        <li>{{i.id_comuna.comuna}}</li>
-                    </ul>
-                    <a  class='btn btn-primary' href="#">Editar</a>
+                    <div class="card" style="background-color: greenyellow;">
+                        <div class="card-body">
+                            <li>{{i.nombre_inmueble}}</li>
+                            <li>{{i.id_region.nombre_region}}</li>
+                            <li>{{i.id_comuna.nombre_comuna}}</li>
+                            <a  class='btn btn-primary' href="{% url 'update_inmueble' i.pk%}">Editar</a>
+                        </div>
+                        </div>
+                    
+                    
+                    
                     <hr>
                     <br>
+                    
                 {% endfor %}
                 <a href="{% url 'logout' %}"">Logout</a>
         {% else %}
@@ -24,4 +32,5 @@
             <h1>Debes Iniciar sesion para acceder al contenido</h1>
             <a href="{% url 'login_url' %}"">Login</a>
     {% endif %}
+</div>
 {% endblock content %}

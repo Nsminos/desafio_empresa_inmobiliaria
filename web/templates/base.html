@@ -19,28 +19,24 @@
     <title>Bienvenido</title>
   </head>
   <body class="container">
-    <div class="row">    
-      {% block header %}
-      {% include 'header.html' %}
-      {% endblock header%}
+    <div class="row">
+    {% block header %}
+    {% include 'header.html' %}
+    {% endblock header %}
     </div>
 
-    <nav>
     {% block navbar %}
     {% include 'navbar.html' %}
     {% endblock navbar %}
-    </nav>
+
     
-    <div>
-      {% block content %}
-      contenido
-      {% endblock content %}
-    </div>
-
-
+    {% block content %}
+    contenido
+    {% endblock content %}
+    
     <footer class="mt-auto">
     {% block footer %}
-    {% include "footer.html" %}
+    {% include 'footer.html' %}
     {% endblock footer %}
     </footer>
     <!-- Optional JavaScript; choose one of the two! -->

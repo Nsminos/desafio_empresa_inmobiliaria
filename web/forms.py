@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Perfil, Inmueble
+from .models import Perfil, Inmueble, Contact
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -30,21 +30,28 @@ class InmuebleForm(forms.ModelForm):
 
         model = Inmueble
         fields = (
-            'id_inmueble','id_comuna','id_region', 
-            'nombre_inmueble', 'm2_construidos', 'cantidad_de_banos', 
-            'cantidad_de_Habitaciones','direccion', 'descripcion','estado',
+            'id_tipo_inmueble','id_comuna','id_region', 
+            'nombre_inmueble','m2_construidos','m2_totales','cant_de_banos', 
+            'cant_de_hab','cant_de_estac','direccion', 'descripcion','estado',
             )   #registra todos los campos disponibles
 
         labels = {
-            'id_inmueble':'Tipo de Inmueble',
+            'id_tipo_inmueble':'Tipo de Inmueble',
             'id_comuna':'Comuna',
             'id_region':'Region', 
             'nombre_inmueble':'Nombre Inmueble',
-            'm2_construidos':'Metros cuadrados construidos', 
-            'cantidad_de_banos':'Numero de Baños', 
-            'cantidad_de_Habitaciones':'Numero de habitaciones',
+            'm2_construidos':'Metros cuadrados construidos',
+            'm2_totales': 'Metros cuadrados totales del terreno', 
+            'cant_de_banos':'Numero de Baños', 
+            'cant_de_hab':'Numero de habitaciones',
+            'cant_de_estac':'Numero de Estacionamientos',
             'direccion':'Direccion',
             'descripcion':'Descripcion',
             'estado' : 'Estado',
             }   #registra todos los campos disponibles
+        
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('correo','nombre','mensaje')
 

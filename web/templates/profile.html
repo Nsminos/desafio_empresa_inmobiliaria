@@ -1,35 +1,35 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
-<div class="conteiner" style="text-align: center;">
-    <div class="row">
-        <h1>Perfil {{user.username}}</h1>
+<div class="container text-center py-3">
 
-        <p> 
+    <div class="row expand-lg">
+        <h1>Perfil {{user.username}}</h1>
         {% if not perfil %}
-    
-        <h3>No se encontro un perfil   </h3>
+        <p> <h3>No se encontro un perfil   </h3></p>
         <a href="{% url 'register_profile' %}" class="btn btn-primary mx-2">Crear Perfil</a>
         {% else %}
-
         <div class="col"></div>
-    
         <div class="col">
-            <ul>
-            <p>Nombre: {{user.first_name}}</p>
-            <p>Tipo : {{perfil.tipo_usuario}}</p>
-            <p>RUT: {{perfil.rut}}</p>
-            <p>Direccion: {{perfil.direccion}}</p>
-            <p>Telefono: {{perfil.telefono}}</p>
-            <p>Correo: {{perfil.correo}}</p>
-            </ul>
-            <a href="{% url 'update_profile' %}" class="btn btn-primary ">Actualizar Perfil</a>
+        <div class="card  text-center " style="align-content: center;">
+            <div class="card-body" style="text-align: center">
+    
+                <p>Nombre: {{user.first_name}}</p>
+                <p>Tipo : {{perfil.tipo_usuario}}</p>
+                <p>RUT: {{perfil.rut}}</p>
+                <p>Direccion: {{perfil.direccion}}</p>
+                <p>Telefono: {{perfil.telefono}}</p>
+                <p>Correo: {{perfil.correo}}</p>
+
+                <a href="{% url 'update_profile' %}" class="btn btn-primary " type="submit">Actualizar Perfil</a>
+                        
+            
+                        
+            </div>
+        </div>
         </div>
         <div class="col"></div>
-
         {% endif %}
-        </p>
+
     </div>
 </div>
 {% endblock content %}
