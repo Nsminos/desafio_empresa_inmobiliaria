@@ -2,37 +2,38 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container">
-    <div class="row">
-        <div class="row mb-3">
-
-            <!-- <form method="get">
-                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+    <div class="card" style="background-color: ghostwhite">
+        <div class="card-body">
+            <div class="row">
+                <div class="row mb-3">
         
-            </form> -->
-        
-            <form method="get" action="{% url 'home'%}">
-                <select name="nombre_region">
-                <option value="">Regiones</option>
-                {% for r in regiones%}
-                    <option value="{{r.id}}">{{r.nombre_region}}</option>
-                {%endfor%}
-                </select>
-                <select name="nombre_comuna">
-                <option value="">Comunas</option>
-                {% for c in comunas%}
-                    <option value="{{c.id}}">{{c.nombre_comuna}}</option>
-                {%endfor%}
-                </select>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </form>
-        </div>
-        <div class="col">
-            <div class="text-blue bg-green rounded-3" >
-                <h2 style="text-align: center;"><em>Oferta inmobiliaria</em></h2>
-                <p style="text-align: center;"><em>Encuentra casas, departamentos y parcelas en arriendo</em></p>    
+                    <form method="get" action="{% url 'home'%}">
+                        <select name="nombre_region">
+                        <option value="">Regiones</option>
+                        {% for r in regiones%}
+                        <option value="{{r.id}}">{{r.nombre_region}}</option>
+                        {%endfor%}
+                        </select>
+                        <select name="nombre_comuna">
+                        <option value="">Comunas</option>
+                        {% for c in comunas%}
+                        <option value="{{c.id}}">{{c.nombre_comuna}}</option>
+                        {%endfor%}
+                        </select>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </form>
+                    <div class="col">
+                        <div class="text-blue bg-green rounded-3" >
+                            <h2 style="text-align: center;"><em>Oferta inmobiliaria</em></h2>
+                            <p style="text-align: center;"><em>Encuentra casas, departamentos y parcelas en arriendo</em></p>    
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
         <div class="carousel-item active">

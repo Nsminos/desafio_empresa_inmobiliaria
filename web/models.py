@@ -22,13 +22,14 @@ class Usuario(models.Model):
 
 class Inmueble(models.Model):
     CHOICES=[
-         ('Disponible', 'Disponible'),
+        ('Disponible', 'Disponible'),
         ('No Disponible', 'No Disponible')
     ]
     id_tipo_inmueble = models.ForeignKey('Tipo_inmueble', on_delete=models.CASCADE)
     id_usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     id_comuna = models.ForeignKey('Comuna', on_delete=models.CASCADE)
     id_region = models.ForeignKey('Region', on_delete=models.CASCADE)
+    image_url = models.URLField(null=True)
     nombre_inmueble = models.CharField(max_length=50, null=False, unique=True)
     direccion = models.CharField(max_length=200)
     descripcion = models.TextField(max_length=250, null=False, blank=False, default='Sin Descripcion')

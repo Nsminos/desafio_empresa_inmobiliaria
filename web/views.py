@@ -24,7 +24,8 @@ def index(request):
     }
     return render(request, 'index.html', context)
     
-    
+def acerca(request):
+    return render(request, 'about.html', {})    
 # def register(request):
 #     if request.method == 'POST':
 #         form = UserForm(request.POST)
