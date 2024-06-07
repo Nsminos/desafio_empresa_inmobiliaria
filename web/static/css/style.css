@@ -1,0 +1,169 @@
+
+/*========= Ajustes footer=========*/
+footer {
+    text-align: left;
+    background-color: #0dcaf0;
+    color: white;
+    padding: 30px 30px 30px 30px;
+    font-size: 20px;
+
+}
+.container-centrado{
+    margin-left: 50px;
+
+}
+h4{
+    margin-top: 5px;
+    text-align: left;
+}
+footer i {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+footer a {
+   color: #fff;
+}
+
+
+/*VARIABLES CSS*/
+:root{
+/*====colors====*/
+--first-color: #000;
+--first-color-light: #fff;
+--body-color:#fff;
+
+/*==== Typografia====*/
+--body-font: 'Cobin',sans-serif;
+/*====Base====*/
+*,::before,::after{
+    box-sizing: border-box;
+}
+body{
+ font-family: var(--body-font);
+}
+
+
+
+}
+/*=========iCONS TOOLTIP=========*/
+.social,
+.social_container,
+.social_content{
+    display: inline-block;
+}
+
+.social{
+    height: 100%;
+    justify-content: center;
+    align-items: left;
+}
+.social_content{
+    position: relative;
+    padding: 5px;
+    margin: 0 1px;
+    background-color: va(--first-color-light);
+    border-radius: 1px;
+    cursor: pointer;             
+}
+.social_icon{
+    font-size: 30px;
+    color: #fff;
+}
+.social_tooltip{
+    /*opacity: 0;*/
+    position: left;
+    padding: 4px 1px;
+    background-color: var(--first-color);
+    color: var(--first-color-light);
+    font-size: 10px;
+    white-space: nowrap;
+    font-weight: 700;
+    border-radius: 5px;
+    pointer-events: none;
+}
+.social_tooltip::after{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--first-color);
+    border-radius: 3px;
+}
+.social_content,
+.social_tooltip,
+.social_icon{
+    transition: .3s;
+}
+.social_content:hover{
+    background-color: var(--first-color);
+}
+.social_content:hover .social_icon{
+    color: var(--first-color-light);
+}
+/*========= Tooltip left=========*/
+.social_tooltip-lef{
+    opacity: 1;
+    left: 0;
+    transform: translateX(-100);     
+}
+.social_tooltip-lef::after{
+    top: 50%;
+    transform: translate(50%, -50%) rotate(45deg);
+    right: 1px;
+}
+.social_content:hover .social_tooltip-left{
+    opacity: 1;
+    left: -1px;
+}
+/*========= Tooltip top=========*/
+.social_tooltip-top{
+    opacity: 1;
+    top: 50%;
+    transform: translatex(50%);
+}
+.social_tooltip-top::after{
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    bottom: 1px;
+}
+.social_content:hover .social_tooltip-top{
+    opacity: 1;
+    top: -3.25px;
+}
+
+/*========= Tooltip bootom =========*/
+.social_tooltip-bootom{
+    opacity: 1;
+    bottom: 50%;
+    left:50%;
+    transform: translate(-50%, 100%);
+}
+.social_tooltip-bootom::after{
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    top: 1px;
+}
+.social_content:hover .social_tooltip-bootom{
+    opacity: 1;
+    bottom: -1px;
+}
+
+
+/*========= Tooltip right =========*/
+.social_tooltip-right{
+    opacity: 1;
+    right: 0;
+    transform: translatex(100%);
+}
+.social_tooltip-right::after{
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    left: 1px;
+}
+.social_content:hover .social_tooltip-right{
+    opacity: 1;
+    right: -1px;
+}
+
+

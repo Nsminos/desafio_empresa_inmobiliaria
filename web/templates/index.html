@@ -55,34 +55,38 @@
         <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="row">
-        <h4><em>Perfil: {{ user.username}}</em></h4>
-        {% for i in inmuebles %}
-        <div class="col col-5 card md-3" style="margin: 20px 50px 20px 50px;">
-            <div class="row g-0">
-                <div class="col-md-6" style="margin-top: 20px;">
-                <img src="https://www.ompropiedades.cl/Fotos/371a.jpg" class="img-fluid rounded-start-align-center" alt="..." style="height: 451px;">
-                </div>
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h4 class="card-title"><em>{{i.nombre_inmueble}}</em></h4>
-                        <p class="card-text">{{i.id_region.nombre_region}}</p>
-                        <p class="card-text">Comuna: {{i.id_comuna.nombre_comuna}}</p>
-                        <p class="card-text">M2 construidos: {{i.m2_construidos}}</p>
-                        <p class="card-text">M2 totales: {{i.m2_totales}}</p>
-                        <p class="card-text">Numero de baños: {{i.cant_de_banos}}</p>
-                        <p class="card-text">Numero de hab: {{i.cant_de_hab}}</p>
-                        <p class="card-text">Numero de estac: {{i.cant_de_estac}}</p>
-                        <p class="card-text">Precio mensual: ${{i.precio_mensual_de_arriendo}}</p>
-                        <p class="card-text">Estado: {{i.estado}}</p>
-                        <a class="btn btn-primary" href="{% url 'contact' i.pk %}">Contactar al propietario</a>
+    <div class="card" style="background-color: ghostwhite">
+        <div class="card-body">
+            <div class="row">
+                <h4><em>Perfil: {{ user.username}}</em></h4>
+                {% for i in inmuebles %}
+                <div class="col col-5 card md-3" style="margin: 20px 50px 20px 50px;">
+                    <div class="row g-0">
+                        <div class="col-md-6" style="margin-top: 20px;">
+                        <img src="{{i.image_url }}" class="img-fluid rounded-start-align-center" alt="..." style="height: 451px;">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                            <h4 class="card-title"><em>{{i.nombre_inmueble}}</em></h4>
+                            <p class="card-text">{{i.id_region.nombre_region}}</p>
+                            <p class="card-text">Comuna: {{i.id_comuna.nombre_comuna}}</p>
+                            <p class="card-text">M2 construidos: {{i.m2_construidos}}</p>
+                            <p class="card-text">M2 totales: {{i.m2_totales}}</p>
+                            <p class="card-text">Numero de baños: {{i.cant_de_banos}}</p>
+                            <p class="card-text">Numero de hab: {{i.cant_de_hab}}</p>
+                            <p class="card-text">Numero de estac: {{i.cant_de_estac}}</p>
+                            <p class="card-text">Precio mensual: ${{i.precio_mensual_de_arriendo}}</p>
+                            <p class="card-text">Estado: {{i.estado}}</p>
+                            <a class="btn btn-primary" href="{% url 'contact' i.pk %}">Contactar al propietario</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
+        
+                {% endfor %}
             </div>
         </div>
-        
-        {% endfor %}
-    </div>
+    
 
             <a href="{% url 'logout' %}"">Logout</a>
     
@@ -91,7 +95,7 @@
     
         <h1>Debes Iniciar sesion para acceder al contenido</h1>
         <a href="{% url 'login_url' %}"">Login</a>
-    
+    </div>
 </div>
 {% endif %}
 {% endblock content %}

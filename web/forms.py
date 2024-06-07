@@ -30,7 +30,7 @@ class InmuebleForm(forms.ModelForm):
 
         model = Inmueble
         fields = (
-            'id_tipo_inmueble','id_comuna','id_region', 
+            'id_tipo_inmueble','id_comuna','id_region','image_url', 
             'nombre_inmueble','m2_construidos','m2_totales','cant_de_banos', 
             'cant_de_hab','cant_de_estac','direccion', 'descripcion','estado',
             )   #registra todos los campos disponibles
@@ -38,7 +38,8 @@ class InmuebleForm(forms.ModelForm):
         labels = {
             'id_tipo_inmueble':'Tipo de Inmueble',
             'id_comuna':'Comuna',
-            'id_region':'Region', 
+            'id_region':'Region',
+            'image_url': 'Imagen',
             'nombre_inmueble':'Nombre Inmueble',
             'm2_construidos':'Metros cuadrados construidos',
             'm2_totales': 'Metros cuadrados totales del terreno', 

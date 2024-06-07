@@ -2,15 +2,15 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect, get_obj
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Inmueble, Perfil, Region, Comuna,Contact
+from .models import Inmueble, Perfil, Region, Comuna, Contact
 from .forms import UserForm, PerfilForm, InmuebleForm, ContactForm
-# Create your views here.
+
 @login_required(login_url='/login/')
 def index(request):
     regiones = Region.objects.all()
     comunas = Comuna.objects.all()
-    region_id = request.GET.get('region')
-    comuna_id = request.GET.get('comuna')
+    region_id = request.GET.get('nombre_region')
+    comuna_id = request.GET.get('nombre_comuna')
     inmuebles = Inmueble.objects.all()
 
     if region_id:
@@ -22,6 +22,7 @@ def index(request):
         'regiones': regiones,
         'comunas': comunas
     }
+    print(context)
     return render(request, 'index.html', context)
     
 def acerca(request):
@@ -142,6 +143,7 @@ def register_inmueble(request, username):
             tipo_inmueble = form.cleaned_data['id_tipo_inmueble']
             comuna = form.cleaned_data['id_comuna']
             region = form.cleaned_data['id_region']
+            image_url = form.cleaned_data['image_url']
             nombre_inmueble = form.cleaned_data['nombre_inmueble']
             m2_construidos = form.cleaned_data['m2_construidos']
             m2_totales = form.cleaned_data['m2_totales']
@@ -155,6 +157,7 @@ def register_inmueble(request, username):
                 id_tipo_inmueble=tipo_inmueble,
                 id_comuna=comuna,
                 id_region=region,
+                image_url = image_url,
                 nombre_inmueble=nombre_inmueble,
                 m2_construidos=m2_construidos,
                 m2_totales=m2_totales, 
