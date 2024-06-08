@@ -38,7 +38,7 @@ class Inmueble(models.Model):
     cant_de_estac = models.PositiveIntegerField(default=0, null=False, blank=False)
     cant_de_hab = models.PositiveIntegerField(default=0, null=False, blank=False)
     cant_de_banos = models.PositiveIntegerField(default=0, null=False, blank=False)
-    precio_mensual_de_arriendo = models.IntegerField(validators=[MinValueValidator(0)],default=0, null=False, blank=False)
+    precio_mensual_de_arriendo = models.PositiveIntegerField(default=0, null=False, blank=False)
     estado = models.CharField(choices=CHOICES)
 
     def __str__(self):

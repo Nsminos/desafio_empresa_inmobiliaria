@@ -34,16 +34,46 @@
     </div>
 
     
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide" style="background-color: ghostwhite">
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://okdiario.com/coolthelifestyle/img/2023/09/19/casa-prefabricada-madrid.jpg" class="d-block w-100" alt="...">
+            <div class="row">
+                <div class="col">
+                <img src="https://okdiario.com/coolthelifestyle/img/2023/09/19/casa-prefabricada-madrid.jpg" class="" alt="" width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://arricorpropiedades.cl/wp-content/uploads/2023/10/1-scaled.jpg" class="col" alt="" width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://www.bienesonline.com/chile/photos/arriendo-casa-nueva-en-comuna-de-buin-1437511816.jpg" class="" alt="" width="405" height="300">
+                </div>
+            </div>
         </div>
         <div class="carousel-item">
-            <img src="https://images.adsttc.com/media/images/55e6/3636/4d8d/5d67/1100/026e/newsletter/edificio-vistabaron-16.jpg?1441150502" class="d-block w-100" alt="...">
+            <div class="row">
+                <div class="col">
+                <img src="https://images.adsttc.com/media/images/55e6/3636/4d8d/5d67/1100/026e/newsletter/edificio-vistabaron-16.jpg?1441150502" class="" alt="" width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://viverospropiedades.cl/new/wp-content/uploads/2023/11/Departamento-3-Dormitorios-2-Banos-Arriendo-1-680x510.jpg" class="" alt="" width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://www.toppropiedades.cl/imagenes/big_c427u1217co3ff31f.jpg" class="" alt="" width="405" height="300">
+                </div>
+            </div>
         </div>
         <div class="carousel-item">
-            <img src="https://imganuncios.mitula.net/parcela_en_venta_en_pillanlelbun_pillanlelbun_cautin_420_m2_3_hab_8960036680781490458.jpg" class="d-block w-100" alt="...">
+            <div class="row">
+                <div class="col">
+                <img src="https://imganuncios.mitula.net/parcela_en_venta_en_pillanlelbun_pillanlelbun_cautin_420_m2_3_hab_8960036680781490458.jpg" class="" alt=""width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://d1cfu8v5n1wsm.cloudfront.net/toctoc/fotos/20230906/2788854/m_wm_fpt_394945_214394945_1377222_1.jpg" class="" alt="" width="405" height="300">
+                </div>
+                <div class="col">
+                <img src="https://www.bienesonline.com/chile/photos/arriendo-parcela-lonquen--21496333571.jpg" class="" alt="" width="405" height="300">
+                </div>
+            </div>
         </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -75,7 +105,7 @@
                             <p class="card-text">Numero de baños: {{i.cant_de_banos}}</p>
                             <p class="card-text">Numero de hab: {{i.cant_de_hab}}</p>
                             <p class="card-text">Numero de estac: {{i.cant_de_estac}}</p>
-                            <p class="card-text">Precio mensual: ${{i.precio_mensual_de_arriendo}}</p>
+                            <p class="card-text">Precio mensual: $ {{i.precio_mensual_de_arriendo}}</p>
                             <p class="card-text">Estado: {{i.estado}}</p>
                             <a class="btn btn-primary" href="{% url 'contact' i.pk %}">Contactar al propietario</a>
                         </div>

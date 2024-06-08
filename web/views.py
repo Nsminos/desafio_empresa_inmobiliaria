@@ -149,22 +149,28 @@ def register_inmueble(request, username):
             m2_totales = form.cleaned_data['m2_totales']
             cant_de_banos = form.cleaned_data['cant_de_banos']
             cant_de_hab = form.cleaned_data['cant_de_hab']
+            cant_de_estac = form.cleaned_data['cant_de_estac']
             direccion = form.cleaned_data['direccion']
             descripcion = form.cleaned_data['descripcion']
+            precio_mensual_de_arriendo = form.cleaned_data['precio_mensual_de_arriendo']
+            estado = form.cleaned_data['estado']
             
             datos = Inmueble(
                 id_usuario=usuario,
                 id_tipo_inmueble=tipo_inmueble,
                 id_comuna=comuna,
                 id_region=region,
-                image_url = image_url,
+                image_url=image_url,
                 nombre_inmueble=nombre_inmueble,
                 m2_construidos=m2_construidos,
                 m2_totales=m2_totales, 
                 cant_de_banos=cant_de_banos,
                 cant_de_hab=cant_de_hab,
+                cant_de_estac=cant_de_estac,
                 direccion=direccion,
-                descripcion=descripcion
+                precio_mensual_de_arriendo=precio_mensual_de_arriendo,
+                descripcion=descripcion,
+                estado=estado,
             )
             datos.save()
             return HttpResponseRedirect('/inmuebles/')
@@ -200,8 +206,10 @@ def update_inmueble(request, pk):
 
     if request.method =="POST":
         form = InmuebleForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             inmueble = Inmueble.objects.filter(pk=pk).update(**form.cleaned_data)
+            print("**************************************************")
             #el metodo update funciona solo con querysets por lo que no funcionara con el metodo get del object
             
             return HttpResponseRedirect('/inmuebles/')
@@ -215,6 +223,7 @@ def update_inmueble(request, pk):
                     'title':'Editar Inmueble',
                     'tipo':tipo
                     }
+        return render(request,'register_inmueble.html', context)
     else:
         form = 'Inmueble no encontrado'
         context = {
@@ -223,7 +232,7 @@ def update_inmueble(request, pk):
                     'tipo':tipo
 
                     }
-    return render(request,'register_inmueble.html', context)
+        return render(request,'register_inmueble.html', context)
 
 
 def contact(request, id):
