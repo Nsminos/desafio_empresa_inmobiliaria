@@ -30,7 +30,7 @@ class Inmueble(models.Model):
     id_comuna = models.ForeignKey('Comuna', on_delete=models.CASCADE)
     id_region = models.ForeignKey('Region', on_delete=models.CASCADE)
     image_url = models.URLField(null=True)
-    nombre_inmueble = models.CharField(max_length=50, null=False, unique=True)
+    nombre_inmueble = models.CharField(max_length=50, null=False)
     direccion = models.CharField(max_length=200)
     descripcion = models.TextField(max_length=250, null=False, blank=False, default='Sin Descripcion')
     m2_construidos = models.FloatField(null=False, blank=False)

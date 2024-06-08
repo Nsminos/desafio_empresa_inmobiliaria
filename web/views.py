@@ -61,12 +61,14 @@ def register(request):
 @login_required(login_url='/login/')
 def profile(request):
     usuario = request.user
-    tipo = Perfil.objects.get(usuario=usuario).tipo_usuario.tipo
+
 
     perfil = Perfil.objects.filter(usuario=usuario)
     if perfil.exists():
+        tipo = Perfil.objects.get(usuario=usuario).tipo_usuario.tipo
         perfil=perfil[0]
     else:
+        tipo = None
         perfil = None
         #poder manejar la excepcion
     context = {
@@ -213,7 +215,9 @@ def update_inmueble(request, pk):
             #el metodo update funciona solo con querysets por lo que no funcionara con el metodo get del object
             
             return HttpResponseRedirect('/inmuebles/')
-
+        else:
+            print(form.errors)
+            return HttpResponse(form.errors)
     ###CON EL GET
     elif inmueble.id_usuario.id == usuario.id:
     #nos traemos el objeto Inmueble con pk = pk

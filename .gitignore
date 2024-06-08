@@ -1,2 +1,5 @@
 .venv
 venv/
+.LICENSE.md
+.LICENSE.txt
+.LICENSE-SELECT2.md
