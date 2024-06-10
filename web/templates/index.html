@@ -2,30 +2,30 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container">
-    <div class="card" style="background-color: ghostwhite">
+    <div class="card1">
         <div class="card-body">
             <div class="row">
                 <div class="row mb-3">
         
                     <form method="get" action="{% url 'home'%}">
-                        <select name="nombre_region">
+                        <select class="form-select-sm" style="width: 150px;" name="nombre_region">
                         <option value="">Regiones</option>
                         {% for r in regiones%}
                         <option value="{{r.id}}">{{r.nombre_region}}</option>
                         {%endfor%}
                         </select>
-                        <select name="nombre_comuna">
+                        <select class="form-select-sm" style="width: 150px;" name="nombre_comuna">
                         <option value="">Comunas</option>
                         {% for c in comunas%}
                         <option value="{{c.id}}">{{c.nombre_comuna}}</option>
                         {%endfor%}
                         </select>
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="submit" class="btn btn-dark">Buscar</button>
                     </form>
                     <div class="col">
                         <div class="text-blue bg-green rounded-3" >
-                            <h2 style="text-align: center;"><em>Oferta inmobiliaria</em></h2>
-                            <p style="text-align: center;"><em>Encuentra casas, departamentos y parcelas en arriendo</em></p>    
+                            <h1 style="text-align: center;"><em>Oferta inmobiliaria</em></h1>
+                            <h4><p style="text-align: center;"><em>Encuentra casas, departamentos y parcelas en arriendo</em></p></h4>    
                         </div>
                     </div>
                 </div>
@@ -85,34 +85,40 @@
         <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="card" style="background-color: ghostwhite">
+    <div class="card1">
         <div class="card-body">
+            
             <div class="row">
                 <h4><em>Perfil: {{ user.username}}</em></h4>
                 {% for i in inmuebles %}
-                <div class="col col-5 card md-3" style="margin: 20px 50px 20px 50px;">
+                <div class="col col-5 card2 md-3" style="margin: 20px 50px 20px 50px;">
                     <div class="row g-0">
-                        <div class="col-md-6" style="margin-top: 20px;">
+                        <div class="col-md-6" style="margin: 10px 0 10px;">
                         <img src="{{i.image_url }}" class="img-fluid rounded-start-align-center" alt="..." style="height: 451px;">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="margin: 40px 0 40px">
                             <div class="card-body">
-                            <h4 class="card-title"><em>{{i.nombre_inmueble}}</em></h4>
-                            <p class="card-text">{{i.id_region.nombre_region}}</p>
-                            <p class="card-text">Comuna: {{i.id_comuna.nombre_comuna}}</p>
-                            <p class="card-text">M2 construidos: {{i.m2_construidos}}</p>
-                            <p class="card-text">M2 totales: {{i.m2_totales}}</p>
-                            <p class="card-text">Numero de baños: {{i.cant_de_banos}}</p>
-                            <p class="card-text">Numero de hab: {{i.cant_de_hab}}</p>
-                            <p class="card-text">Numero de estac: {{i.cant_de_estac}}</p>
-                            <p class="card-text">Precio mensual: $ {{i.precio_mensual_de_arriendo}}</p>
-                            <p class="card-text">Estado: {{i.estado}}</p>
-                            <a class="btn btn-primary" href="{% url 'contact' i.pk %}">Contactar al propietario</a>
+                            <h4 class="card-title" style="text-align: center "line-height=" 200%;"><em>{{i.nombre_inmueble}}</em></h4>
+                            <h6>
+                            <ul>
+                            <li><p class="card-text" style="text-align: left;">Región: {{i.id_region.nombre_region}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">Comuna: {{i.id_comuna.nombre_comuna}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">M2 construidos: {{i.m2_construidos}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">M2 totales: {{i.m2_totales}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">Numero de baños: {{i.cant_de_banos}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">Numero de hab: {{i.cant_de_hab}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">Numero de estac: {{i.cant_de_estac}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">precio mensual: $ {{i.precio_mensual_de_arriendo}}</p></li>
+                            <li><p class="card-text"style="text-align: left;">Estado: {{i.estado}}</p></li>
+                                <div class="text-align center-end">
+                                <a class="btn btn-dark"  href="{% url 'contact' i.pk %}">Contactar al propietario</a>
+                                </div>
+                            </ul></h6>
                         </div>
                     </div>
                     </div>
                 </div>
-        
+                
                 {% endfor %}
             </div>
         </div>

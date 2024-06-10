@@ -51,7 +51,7 @@ class InmuebleForm(forms.ModelForm):
             'descripcion':'Descripcion',
             'estado' : 'Estado',
             }   #registra todos los campos disponibles
-        
+
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
