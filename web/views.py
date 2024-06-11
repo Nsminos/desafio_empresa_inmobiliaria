@@ -37,6 +37,10 @@ def acerca(request):
 #         form = UserForm()
 #         context = {'form':form}
 #         return render(request,'registration/register.html', context)
+@login_required
+def bienvenido(request):
+    return render(request, 'welcome.html', {}) 
+
 
 def register(request):
     if request.user.is_authenticated:

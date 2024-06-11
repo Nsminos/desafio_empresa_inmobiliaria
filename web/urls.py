@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    index, acerca, register, profile,
+    index, acerca,bienvenido, register, profile,
     register_profile, update_profile,
     register_inmueble, get_inmuebles,
     update_inmueble, contact, messages
@@ -10,6 +10,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     path('home/',index, name='home'),
     path('acerca/', acerca, name="acerca"),
+    path('bienvenido/', bienvenido, name="bienvenido"),
     path('login/', LoginView.as_view(next_page='profile'), name='login_url'),
     path('logout/', LogoutView.as_view(next_page='login_url'), name='logout'),
     path('register/', register, name='register'),

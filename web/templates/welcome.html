@@ -1,3 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block content %} 
 
-{% block header %} Bienvenido Cliente {% endblock header%}
+<div class="container">
+    <div class="card1">
+        <div class="card-body">
+            <div class="card text-bg-dark">
+                <img src="https://www.ultimahora.cl/wp-content/uploads/2022/12/casas.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                <h5 class="card-title" style="text-align: center;">Bienvenido al primer portal de Chile especializado en arriendo</h5>
+                <p class="card-text" style="text-align: center;">Tenemos más de 75.000 propiedades disponibles, la oferta del mercado consolidada en un solo lugar para ti.</p>
+                <p class="card-text"><small>Conocenos</small></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}
