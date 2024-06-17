@@ -3,10 +3,10 @@
 
 <div  class="container">
   
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" style="background-color: black;">
     <div class="container-fluid">
       
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand text-white" href="#">
         <img src="{% static 'inmobiliaria.png' %}" alt="Logo" width="200px"  class="d-inline-block align-text-left">
         <b><em>Portal de arriendos</em></b>
       </a>
@@ -18,27 +18,27 @@
 
             {% if tipo == 'Arrendador'  %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'get_inmuebles' %}"><b><em>Propiedades</em></b></a>
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'get_inmuebles' %}"><b><em>Propiedades</em></b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'register_inmueble' user.username %}"><b><em>Registrar propiedad</em></b></a>
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'register_inmueble' user.username %}"><b><em>Registrar propiedad</em></b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'mensaje'%}"><b><em>Mensajes</em></b></a>
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'mensaje'%}"><b><em>Mensajes</em></b></a>
               </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><b><em>Arriendos</em></b></a>
+              <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}"><b><em>Arriendos</em></b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><b><em>Bienvenidos</em></b></a>
+              <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}"><b><em>Bienvenidos</em></b></a>
             </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'acerca' %}"><b><em>Acerca</em></b></a>
+              <a class="nav-link active text-white" aria-current="page" href="{% url 'acerca' %}"><b><em>Acerca</em></b></a>
             </li>   
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'profile' %}"><b><em>Mi perfil</em></b></a>
+              <a class="nav-link active text-white" aria-current="page" href="{% url 'profile' %}"><b><em>Mi perfil</em></b></a>
             </li>
             
             {% if user.is_authenticated %}
